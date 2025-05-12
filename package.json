@@ -20,8 +20,36 @@
       {
         "command": "copilotChatHelper.askCopilot",
         "title": "Ask Copilot"
+      },
+      {
+        "command": "copilotChatHelper.analyzeWithOllama",
+        "title": "Analizar Código con Ollama (Offline)"
+      },
+      {
+        "command": "copilotChatHelper.setupOllama",
+        "title": "Configurar Ollama para Análisis de Código"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Copilot Chat Helper",
+      "properties": {
+        "copilotChatHelper.ollama.model": {
+          "type": "string",
+          "default": "codellama",
+          "description": "Modelo de Ollama a utilizar para el análisis de código"
+        },
+        "copilotChatHelper.ollama.host": {
+          "type": "string",
+          "default": "http://localhost:11434",
+          "description": "URL del servidor de Ollama"
+        },
+        "copilotChatHelper.ollama.autoSetup": {
+          "type": "boolean",
+          "default": true,
+          "description": "Intentar configurar Ollama automáticamente si no está disponible"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
@@ -32,14 +60,18 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.99.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "20.x",
+    "@types/node-fetch": "^2.6.12",
+    "@types/vscode": "^1.99.0",
     "@typescript-eslint/eslint-plugin": "^8.31.1",
     "@typescript-eslint/parser": "^8.31.1",
-    "eslint": "^9.25.1",
-    "typescript": "^5.8.3",
     "@vscode/test-cli": "^0.0.10",
-    "@vscode/test-electron": "^2.5.2"
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.25.1",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "node-fetch": "^2.7.0"
   }
 }
